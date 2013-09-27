@@ -71,11 +71,11 @@ function civibarcode_civicrm_managed(&$entities) {
 
 
 function civibarcode_civicrm_tokens( &$tokens ) {
-    $tokens['event-registration-barcode'] = array( 'event-registration-barcode.bar' => 'Event Registration Barcode' );
+    $tokens['event_registration_barcode'] = array( 'event_registration_barcode.bar' => 'Event Registration Barcode' );
 }
 
 function civibarcode_civicrm_tokenValues( &$values, &$contactIDs, $dontCare, $tokens, $context ) {
-  if(array_key_exists("event-registration-barcode",$tokens) && isset($contactIDs['contact_id'])) {
+  if(array_key_exists("event_registration_barcode",$tokens) && isset($contactIDs['contact_id'])) {
     ini_set('memory_limit', '256M');
     $cid = $contactIDs['contact_id'];
     $query = "SELECT max(id) as id FROM civicrm_participant WHERE contact_id = ".$cid;
@@ -132,7 +132,7 @@ function civibarcode_civicrm_tokenValues( &$values, &$contactIDs, $dontCare, $to
     $drawing->finish(BCGDrawing::IMG_FORMAT_PNG);
     $imgurl = $image_path.$filename.'.png';
 
-    $values[$cid]['event-registration-barcode.bar'] = '<div><img src="'.$imgurl.'" alt="Regiatration Barcode"></div>';
+    $values[$cid]['event_registration_barcode.bar'] = '<div><img src="'.$imgurl.'" alt="Regiatration Barcode"></div>';
    } 
   }
 }
