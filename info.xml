@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<extension key="com.osseed.civibarcode" type="module">
+  <file>civibarcode</file>
+  <name>Event Registration Barcode</name>
+  <description>Generate Barcode for Event registration email</description>
+  <license>FIXME</license>
+  <maintainer>
+    <author>OSSeed</author>
+    <email>hello@osseed.com</email>
+  </maintainer>
+  <releaseDate>2013-09-23</releaseDate>
+  <version>1.0</version>
+  <develStage>alpha</develStage>
+  <compatibility>
+    <ver>4.3</ver>
+  </compatibility>
+  <comments>Generate Barcode for Event registration email</comments>
+  <civix>
+    <namespace></namespace>
+  </civix>
+</extension>

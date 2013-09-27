@@ -1,0 +1,197 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class
+END
+BCGFontPhp.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGFontPhp.php
+END
+BCGLabel.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGLabel.php
+END
+BCGgs1128.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGgs1128.barcode.php
+END
+BCGupca.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGupca.barcode.php
+END
+BCGmsi.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGmsi.barcode.php
+END
+BCGupcext2.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGupcext2.barcode.php
+END
+BCGcodabar.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGcodabar.barcode.php
+END
+BCGupce.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGupce.barcode.php
+END
+BCGupcext5.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGupcext5.barcode.php
+END
+BCGDrawing.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGDrawing.php
+END
+BCGBarcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGBarcode.php
+END
+BCGArgumentException.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGArgumentException.php
+END
+JoinDraw.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/JoinDraw.php
+END
+BCGcode128.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGcode128.barcode.php
+END
+BCGothercode.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGothercode.barcode.php
+END
+BCGcode11.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGcode11.barcode.php
+END
+BCGColor.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGColor.php
+END
+BCGintelligentmail.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGintelligentmail.barcode.php
+END
+BCGcode93.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGcode93.barcode.php
+END
+BCGBarcode1D.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGBarcode1D.php
+END
+BCGcode39.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGcode39.barcode.php
+END
+BCGisbn.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGisbn.barcode.php
+END
+BCGean8.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGean8.barcode.php
+END
+BCGParseException.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGParseException.php
+END
+BCGpostnet.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGpostnet.barcode.php
+END
+BCGi25.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGi25.barcode.php
+END
+BCGean13.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGean13.barcode.php
+END
+BCGcode39extended.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGcode39extended.barcode.php
+END
+BCGFont.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGFont.php
+END
+BCGFontFile.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGFontFile.php
+END
+BCGs25.barcode.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGs25.barcode.php
+END
+BCGDrawException.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/drupal_traning/!svn/ver/46/d7/com.civimail.barcode/barcodegen/class/BCGDrawException.php
+END
