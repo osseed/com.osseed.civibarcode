@@ -3,7 +3,7 @@ com.osseed.civibarcode
 
 Introduction
 -------------
-The extension creates a token {event_registration_barcode.bar} that can be used in message templates of Event Registration mail.
+The extension creates a token {event_registration_barcode.bar} that can be used in message templates of Event Registration mail .
 
 Installation
 -------------
