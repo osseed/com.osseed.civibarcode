@@ -1,0 +1,20 @@
+{
+    "name": "root/com.osseed.civibarcode",
+    "type": "library",
+    "require": {
+        "barcode-bakery/barcode-1d": ">=7",
+        "barcode-bakery/barcode-common": ">=7"
+    },
+    "license": "GPL-2.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Root\\ComOsseedCivibarcode\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "OSSeed",
+            "email": "hello@osseed.com"
+        }
+    ]
+}

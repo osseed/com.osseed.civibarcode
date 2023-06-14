@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'root/com.osseed.civibarcode',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '6f81e30a83448e3c2c931803f035aeb9aac144de',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        'barcode-bakery/barcode-1d' => array(
+            'pretty_version' => '7.0.4',
+            'version' => '7.0.4.0',
+            'reference' => '7291b305190b64362bfff774eb9ae5145861ca07',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../barcode-bakery/barcode-1d',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'barcode-bakery/barcode-common' => array(
+            'pretty_version' => '7.0.3',
+            'version' => '7.0.3.0',
+            'reference' => 'eafc5b7ac802cc21dc6218d6bad5b4d2d0fbfab5',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../barcode-bakery/barcode-common',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'root/com.osseed.civibarcode' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '6f81e30a83448e3c2c931803f035aeb9aac144de',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);
