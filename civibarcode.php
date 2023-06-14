@@ -50,70 +50,92 @@ function civibarcode_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
   return _civibarcode_civix_civicrm_upgrade($op, $queue);
 }
 
-function civibarcode_civicrm_tokens( &$tokens ) {
-    $tokens['event_registration_barcode'] = array( 'event_registration_barcode.bar' => 'Event Registration Barcode' );
+use Symfony\Component\Config\Resource\FileResource;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+
+/**
+ * Add token services to the container.
+ *
+ * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+ */
+function civibarcode_civicrm_container(ContainerBuilder $container) {
+  $container->addResource(new FileResource(__FILE__));
+  $container->findDefinition('dispatcher')->addMethodCall('addListener',
+    ['civi.token.list', 'civibarcode_register_tokens']
+  )->setPublic(TRUE);
+  $container->findDefinition('dispatcher')->addMethodCall('addListener',
+    ['civi.token.eval', 'civibarcode_evaluate_tokens']
+  )->setPublic(TRUE);
 }
 
-function civibarcode_civicrm_tokenValues( &$values, &$contactIDs, $dontCare, $tokens, $context ) {
-  if(array_key_exists("event_registration_barcode",$tokens) && isset($contactIDs['contact_id'])) {
-    ini_set('memory_limit', '256M');
-    $cid = $contactIDs['contact_id'];
-    $query = "SELECT max(id) as id FROM civicrm_participant WHERE contact_id = ".$cid;
-    $dao = CRM_Core_DAO::executeQuery( $query );
-    $participant_id = '';
-   while($dao->fetch()) {
-     $participant_id = $dao->id;
-   }
-   if(!empty($participant_id)) {
-    require_once 'barcodegen/class/BCGFontFile.php';
-    require_once 'barcodegen/class/BCGColor.php';
-    require_once 'barcodegen/class/BCGDrawing.php';
-    require_once 'barcodegen/class/BCGcode39.barcode.php';
+/**
+ * Registers the token for event registration barcode.
+ *
+ * @param \Civi\Token\Event\TokenRegisterEvent $e
+ */
+function civibarcode_register_tokens(\Civi\Token\Event\TokenRegisterEvent $e) {
+  $e->entity('barcode')
+    ->register('event_registration_barcode', ts('Event Registration Barcode'));
+}
+
+/**
+ * Evaluates the token value for event registration barcode for each contact id.
+ *
+ * @param \Civi\Token\Event\TokenValueEvent $e
+ */
+function civibarcode_evaluate_tokens(\Civi\Token\Event\TokenValueEvent $e) {
+  foreach ($e->getRows() as $row) {
+    /** @var  \Civi\Token\TokenRow $row */
+
     $config = CRM_Core_Config::singleton();
-    $png_upload_dir = $config->imageUploadDir;
+    $upload_dir = $config->imageUploadDir;
     $image_path = $config->imageUploadURL;
-    $code = strtotime("now")."-".$participant_id;
-    // Loading Font
-    $font = new BCGFontFile(dirname(__FILE__).DIRECTORY_SEPARATOR.'barcodegen/font/Arial.ttf', 18);
 
-    // Don't forget to sanitize user inputs
-    $filename = (string)$code;
+    $participant_id = '';
+    if (isset($row->context['contactId'])) {
+      $cid = $row->context['contactId'];
+      $query = "SELECT max(id) as pid FROM civicrm_participant WHERE contact_id = $cid";
+      $dao = CRM_Core_DAO::executeQuery($query);
+      while ($dao->fetch()) {
+        $participant_id = $dao->pid;
+      }
 
-    // The arguments are R, G, B for color.
-    $color_black = new BCGColor(0, 0, 0);
-    $color_white = new BCGColor(255, 255, 255);
+      if (!empty($participant_id)) {
+        require_once __DIR__ . '/vendor/autoload.php';
+        // Loading Font
+        $font = new \BarcodeBakery\Common\BCGFontFile(__DIR__ . '/font/Arial.ttf', 18);
+        // Don't forget to sanitize user inputs
+        $filename = (string) strtotime('now') . "-" . $participant_id;
+        // The arguments are R, G, and B for color
+        $color_black = new \BarcodeBakery\Common\BCGColor(0, 0, 0);
+        $color_white = new \BarcodeBakery\Common\BCGColor(255, 255, 255);
 
-    $drawException = null;
-   try {
-    $code = new BCGcode39();
-    $code->setScale(2); // Resolution
-    $code->setThickness(30); // Thickness
-    $code->setForegroundColor($color_black); // Color of bars
-    $code->setBackgroundColor($color_white); // Color of spaces
-    $code->setFont($font); // Font (or 0)
-    $code->parse($filename); // Text
-   } catch(Exception $exception) {
-     $drawException = $exception;
+        try {
+          // Set barcode config.
+          $code = new \BarcodeBakery\Barcode\BCGcode128();
+          $code->setScale(2); // Resolution
+          $code->setThickness(30); // Thickness
+          $code->setForegroundColor($color_black); // Color of bars
+          $code->setBackgroundColor($color_white); // Color of spaces
+          $code->setFont($font); // Font (or 0)
+          $code->parse($filename); // Text
+
+          // Save the barcode image to CiviCRM files directory
+          $imgurl = $upload_dir . $filename . '.png';
+          $drawing = new \BarcodeBakery\Common\BCGDrawing($code, $color_white);
+          $drawing->finish(\BarcodeBakery\Common\BCGDrawing::IMG_FORMAT_PNG, $imgurl);
+          $image_url = $image_path . $filename . '.png';
+          $barcode = '<div><img src="' . $image_url . '" alt="Registration Barcode"></div>';
+        } catch (\Throwable $th) {
+          CRM_Core_Error::debug_log_message('Barcode image creation failed with error: ' . $th->getMessage());
+          $barcode = '';
+        }
+      } else {
+        $barcode = '';
+      }
     }
 
-    /* Here is the list of the arguments
-    1 - Filename (empty : display on screen)
-    2 - Background color */
-    $barcode_image = $png_upload_dir.$filename.'.png';
-    $drawing = new BCGDrawing($barcode_image, $color_white);
-    if($drawException) {
-      $drawing->drawException($drawException);
-    } else {
-      $drawing->setBarcode($code);
-      $drawing->draw();
-     }
-
-   // Draw (or save) the image into PNG format.
-    $drawing->finish(BCGDrawing::IMG_FORMAT_PNG);
-    $imgurl = $image_path.$filename.'.png';
-
-    $values[$cid]['event_registration_barcode.bar'] = '<div><img src="'.$imgurl.'" alt="Regiatration Barcode"></div>';
-   }
+    $row->format('text/html');
+    $row->tokens('barcode', 'event_registration_barcode', $barcode);
   }
 }
-
