@@ -10,15 +10,6 @@ function civibarcode_civicrm_config(&$config) {
 }
 
 /**
- * Implementation of hook_civicrm_xmlMenu
- *
- * @param $files array(string)
- */
-function civibarcode_civicrm_xmlMenu(&$files) {
-  _civibarcode_civix_civicrm_xmlMenu($files);
-}
-
-/**
  * Implementation of hook_civicrm_install
  */
 function civibarcode_civicrm_install() {
@@ -58,17 +49,6 @@ function civibarcode_civicrm_disable() {
 function civibarcode_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
   return _civibarcode_civix_civicrm_upgrade($op, $queue);
 }
-
-/**
- * Implementation of hook_civicrm_managed
- *
- * Generate a list of entities to create/deactivate/delete when this module
- * is installed, disabled, uninstalled.
- */
-function civibarcode_civicrm_managed(&$entities) {
-  return _civibarcode_civix_civicrm_managed($entities);
-}
-
 
 function civibarcode_civicrm_tokens( &$tokens ) {
     $tokens['event_registration_barcode'] = array( 'event_registration_barcode.bar' => 'Event Registration Barcode' );
@@ -133,8 +113,7 @@ function civibarcode_civicrm_tokenValues( &$values, &$contactIDs, $dontCare, $to
     $imgurl = $image_path.$filename.'.png';
 
     $values[$cid]['event_registration_barcode.bar'] = '<div><img src="'.$imgurl.'" alt="Regiatration Barcode"></div>';
-   } 
+   }
   }
 }
-
 
